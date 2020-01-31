@@ -30,9 +30,9 @@ if($_POST) {
 		while ($result = mysqli_fetch_assoc($query)) {
 			$table .= '<tr>
 				<td><center>'.$result['order_date'].'</center></td>
-				<td><center>'.$result['client_name'].'</center></td>
-				<td><center>'.$result['client_contact'].'</center></td>
-				<td><center>'.$result['grand_total'].'</center></td>
+				<td><center>'.htmlentities($result['client_name']).'</center></td>
+				<td><center>'.htmlentities($result['client_contact']).'</center></td>
+				<td><center>'.htmlentities($result['grand_total']).'</center></td>
 			</tr>';	
 			$totalAmount += $result['grand_total'];
 		}

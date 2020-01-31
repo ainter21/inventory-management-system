@@ -97,7 +97,7 @@ if($_POST) {
 								} ?>
 						</div>
 
-						<form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm">
+						<form class="form-horizontal" action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>" method="post" id="loginForm">
 							<fieldset>
 							  <div class="form-group">
 									<label for="username" class="col-sm-2 control-label">Username</label>

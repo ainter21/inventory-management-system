@@ -190,4 +190,4 @@ $orderItemResult = mysqli_query($conn, $orderItemSql);
             </table>';
 mysqli_close($conn);
 
-echo $table;
+echo htmlentities($table);

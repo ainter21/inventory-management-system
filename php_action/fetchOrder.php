@@ -53,9 +53,9 @@ if(mysqli_num_rows($result) > 0) {
  		// order date
  		$row[1],
  		// client name
- 		$row[2], 
+ 		htmlentities($row[2]), 
  		// client contact
- 		$row[3], 		 	
+ 		htmlentities($row[3]), 		 	
  		$itemCountRow, 		 	
  		$paymentStatus,
  		// button

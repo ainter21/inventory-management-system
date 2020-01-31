@@ -150,8 +150,8 @@ mysqli_close($conn);
 			  	<tbody>
 					<?php while ($orderResult = mysqli_fetch_assoc($userwiseQuery)) { ?>
 						<tr>
-							<td><?php echo $orderResult['username']?></td>
-							<td><?php echo $orderResult['totalorder']?></td>
+							<td><?php echo htmlentities($orderResult['username'])?></td>
+							<td><?php echo htmlentities($orderResult['totalorder'])?></td>
 							
 						</tr>
 						

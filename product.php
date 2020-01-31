@@ -106,7 +106,7 @@
 								$result = mysqli_query($conn, $sql);
 
 								while($row =  mysqli_fetch_array($result)) {
-									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+									echo "<option value='".$row[0]."'>".htmlentities($row[1])."</option>";
 								} // while
 								
 				      	?>
@@ -125,7 +125,7 @@
 								$result = mysqli_query($conn, $sql);
 
 								while($row =  mysqli_fetch_array($result)) {
-									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+									echo "<option value='".$row[0]."'>".htmlentities($row[1])."</option>";
 								} // while
 								
 				      	?>
@@ -264,7 +264,7 @@
 										$result = mysqli_query($conn, $sql);
 
 										while($row =  mysqli_fetch_array($result)) {
-											echo "<option value='".$row[0]."'>".$row[1]."</option>";
+											echo "<option value='".$row[0]."'>".htmlentities($row[1])."</option>";
 										} // while
 										
 						      	?>
@@ -283,7 +283,7 @@
 										$result = mysqli_query($conn, $sql);
 
 										while($row = mysqli_fetch_array($result)) {
-											echo "<option value='".$row[0]."'>".$row[1]."</option>";
+											echo "<option value='".$row[0]."'>".htmlentities($row[1])."</option>";
 										} // while
 										
 						      	?>

@@ -34,7 +34,7 @@ if(mysqli_num_rows($result) > 0) {
 
  	$output['data'][] = array( 		
  		// name
- 		$username,
+ 		htmlentities($username),
  		// button
  		$button 		
  		); 	

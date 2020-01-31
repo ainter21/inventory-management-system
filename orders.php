@@ -34,7 +34,7 @@ if($_GET['o'] == 'add') {
 	} else if($_GET['o'] == 'manord') { 
 		echo "Manage Orders";
 	} else if($_GET['o'] == 'editOrd') { 
-		echo "Edit Order " . $_GET['i'];
+		echo "Edit Order " .htmlentities($_GET['i']);
 	}
 	?>	
 </h4>
@@ -108,7 +108,7 @@ if($_GET['o'] == 'add') {
 			  							$productData = mysqli_query($conn, $productSql);
 
 			  							while($row = mysqli_fetch_array($productData)) {									 		
-			  								echo "<option value='".$row['product_id']."' id='changeProduct".$row['product_id']."'>".$row['product_name']."</option>";
+			  								echo "<option value='".$row['product_id']."' id='changeProduct".$row['product_id']."'>".htmlentities($row['product_name'])."</option>";
 										 	} // /while 
 
 			  						?>
@@ -290,13 +290,13 @@ if($_GET['o'] == 'add') {
 			  <div class="form-group">
 			    <label for="clientName" class="col-sm-2 control-label">Client Name</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Client Name" autocomplete="off" value="<?php echo $data[2] ?>" />
+			      <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Client Name" autocomplete="off" value="<?php echo htmlentities($data[2]) ?>" />
 			    </div>
 			  </div> <!--/form-group-->
 			  <div class="form-group">
 			    <label for="clientContact" class="col-sm-2 control-label">Client Contact</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Contact Number" autocomplete="off" value="<?php echo $data[3] ?>" />
+			      <input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Contact Number" autocomplete="off" value="<?php echo htmlentities($data[3]) ?>" />
 			    </div>
 			  </div> <!--/form-group-->			  
 
@@ -342,7 +342,7 @@ if($_GET['o'] == 'add') {
 			  									$selected = "";
 			  								}
 
-			  								echo "<option value='".$row['product_id']."' id='changeProduct".$row['product_id']."' ".$selected." >".$row['product_name']."</option>";
+			  								echo "<option value='".$row['product_id']."' id='changeProduct".$row['product_id']."' ".$selected." >".htmlentities($row['product_name'])."</option>";
 										 	} // /while 
 
 			  						?>
@@ -350,8 +350,8 @@ if($_GET['o'] == 'add') {
 			  					</div>
 			  				</td>
 			  				<td style="padding-left:20px;">			  					
-			  					<input type="text" name="rate[]" id="rate<?php echo $x; ?>" autocomplete="off" disabled="true" class="form-control" value="<?php echo $orderItemData['rate']; ?>" />			  					
-			  					<input type="hidden" name="rateValue[]" id="rateValue<?php echo $x; ?>" autocomplete="off" class="form-control" value="<?php echo $orderItemData['rate']; ?>" />			  					
+			  					<input type="text" name="rate[]" id="rate<?php echo $x; ?>" autocomplete="off" disabled="true" class="form-control" value="<?php echo htmlentities($orderItemData['rate']); ?>" />			  					
+			  					<input type="hidden" name="rateValue[]" id="rateValue<?php echo $x; ?>" autocomplete="off" class="form-control" value="<?php echo htmlentities($orderItemData['rate']); ?>" />			  					
 			  				</td>
 							<td style="padding-left:20px;">
 			  					<div class="form-group">
@@ -362,7 +362,7 @@ if($_GET['o'] == 'add') {
 			  							while($row = mysqli_fetch_array($productData)) {									 		
 			  								$selected = "";
 			  								if($row['product_id'] == $orderItemData['product_id']) { 
-			  									echo "<p id='available_quantity".$row['product_id']."'>".$row['quantity']."</p>";
+			  									echo "<p id='available_quantity".$row['product_id']."'>".htmlentities($row['quantity'])."</p>";
 											}
 			  								 else {
 			  									$selected = "";
@@ -377,12 +377,12 @@ if($_GET['o'] == 'add') {
 			  				</td>
 			  				<td style="padding-left:20px;">
 			  					<div class="form-group">
-			  					<input type="number" name="quantity[]" id="quantity<?php echo $x; ?>" onkeyup="getTotal(<?php echo $x ?>)" autocomplete="off" class="form-control" min="1" value="<?php echo $orderItemData['quantity']; ?>" />
+			  					<input type="number" name="quantity[]" id="quantity<?php echo $x; ?>" onkeyup="getTotal(<?php echo $x ?>)" autocomplete="off" class="form-control" min="1" value="<?php echo htmlentities($orderItemData['quantity']); ?>" />
 			  					</div>
 			  				</td>
 			  				<td style="padding-left:20px;">			  					
-			  					<input type="text" name="total[]" id="total<?php echo $x; ?>" autocomplete="off" class="form-control" disabled="true" value="<?php echo $orderItemData['total']; ?>"/>			  					
-			  					<input type="hidden" name="totalValue[]" id="totalValue<?php echo $x; ?>" autocomplete="off" class="form-control" value="<?php echo $orderItemData['total']; ?>"/>			  					
+			  					<input type="text" name="total[]" id="total<?php echo $x; ?>" autocomplete="off" class="form-control" disabled="true" value="<?php echo htmlentities($orderItemData['total']); ?>"/>			  					
+			  					<input type="hidden" name="totalValue[]" id="totalValue<?php echo $x; ?>" autocomplete="off" class="form-control" value="<?php echo htmlentities($orderItemData['total']); ?>"/>			  					
 			  				</td>
 			  				<td>
 
@@ -401,42 +401,42 @@ if($_GET['o'] == 'add') {
 			  	<div class="form-group">
 				    <label for="subTotal" class="col-sm-3 control-label">Sub Amount</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="subTotal" name="subTotal" disabled="true" value="<?php echo $data[4] ?>" />
-				      <input type="hidden" class="form-control" id="subTotalValue" name="subTotalValue" value="<?php echo $data[4] ?>" />
+				      <input type="text" class="form-control" id="subTotal" name="subTotal" disabled="true" value="<?php echo htmlentities($data[4]) ?>" />
+				      <input type="hidden" class="form-control" id="subTotalValue" name="subTotalValue" value="<?php echo htmlentities($data[4]) ?>" />
 				    </div>
 				  </div> <!--/form-group-->			  
 				  			  
 				  <div class="form-group">
 				    <label for="totalAmount" class="col-sm-3 control-label">Total Amount</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="totalAmount" name="totalAmount" disabled="true" value="<?php echo $data[6] ?>" />
-				      <input type="hidden" class="form-control" id="totalAmountValue" name="totalAmountValue" value="<?php echo $data[6] ?>"  />
+				      <input type="text" class="form-control" id="totalAmount" name="totalAmount" disabled="true" value="<?php echo htmlentities($data[6]) ?>" />
+				      <input type="hidden" class="form-control" id="totalAmountValue" name="totalAmountValue" value="<?php echo htmlentities($data[6]) ?>"  />
 				    </div>
 				  </div> <!--/form-group-->			  
 				  <div class="form-group">
 				    <label for="discount" class="col-sm-3 control-label">Discount</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="discount" name="discount" onkeyup="discountFunc()" autocomplete="off" value="<?php echo $data[7] ?>" />
+				      <input type="text" class="form-control" id="discount" name="discount" onkeyup="discountFunc()" autocomplete="off" value="<?php echo htmlentities($data[7]) ?>" />
 				    </div>
 				  </div> <!--/form-group-->	
 				  <div class="form-group">
 				    <label for="grandTotal" class="col-sm-3 control-label">Grand Total</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="grandTotal" name="grandTotal" disabled="true" value="<?php echo $data[8] ?>"  />
-				      <input type="hidden" class="form-control" id="grandTotalValue" name="grandTotalValue" value="<?php echo $data[8] ?>"  />
+				      <input type="text" class="form-control" id="grandTotal" name="grandTotal" disabled="true" value="<?php echo htmlentities($data[8]) ?>"  />
+				      <input type="hidden" class="form-control" id="grandTotalValue" name="grandTotalValue" value="<?php echo htmlentities($data[8]) ?>"  />
 				    </div>
 				  </div> <!--/form-group-->	
 				  <div class="form-group">
 				    <label for="vat" class="col-sm-3 control-label gst"><?php if($data[13] == 2) {echo "IGST 18%";} else echo "GST 18%"; ?></label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="vat" name="vat" disabled="true" value="<?php echo $data[5] ?>"  />
-				      <input type="hidden" class="form-control" id="vatValue" name="vatValue" value="<?php echo $data[5] ?>"  />
+				      <input type="text" class="form-control" id="vat" name="vat" disabled="true" value="<?php echo htmlentities($data[5]) ?>"  />
+				      <input type="hidden" class="form-control" id="vatValue" name="vatValue" value="<?php echo htmlentities($data[5]) ?>"  />
 				    </div>
 				  </div> 
 				  <div class="form-group">
 				    <label for="gstn" class="col-sm-3 control-label gst">G.S.T.IN</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="gstn" name="gstn" value="<?php echo $data[14] ?>"  />
+				      <input type="text" class="form-control" id="gstn" name="gstn" value="<?php echo htmlentities($data[14]) ?>"  />
 				    </div>
 				  </div><!--/form-group-->		  		  
 			  </div> <!--/col-md-6-->
@@ -445,14 +445,14 @@ if($_GET['o'] == 'add') {
 			  	<div class="form-group">
 				    <label for="paid" class="col-sm-3 control-label">Paid Amount</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="paid" name="paid" autocomplete="off" onkeyup="paidAmount()" value="<?php echo $data[9] ?>"  />
+				      <input type="text" class="form-control" id="paid" name="paid" autocomplete="off" onkeyup="paidAmount()" value="<?php echo htmlentities($data[9]) ?>"  />
 				    </div>
 				  </div> <!--/form-group-->			  
 				  <div class="form-group">
 				    <label for="due" class="col-sm-3 control-label">Due Amount</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="due" name="due" disabled="true" value="<?php echo $data[10] ?>"  />
-				      <input type="hidden" class="form-control" id="dueValue" name="dueValue" value="<?php echo $data[10] ?>"  />
+				      <input type="text" class="form-control" id="due" name="due" disabled="true" value="<?php echo htmlentities($data[10]) ?>"  />
+				      <input type="hidden" class="form-control" id="dueValue" name="dueValue" value="<?php echo htmlentities($data[10]) ?>"  />
 				    </div>
 				  </div> <!--/form-group-->		
 				  <div class="form-group">
@@ -510,7 +510,7 @@ if($_GET['o'] == 'add') {
 			    <div class="col-sm-offset-2 col-sm-10">
 			    <button type="button" class="btn btn-default" onclick="addRow()" id="addRowBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-plus-sign"></i> Add Row </button>
 
-			    <input type="hidden" name="orderId" id="orderId" value="<?php echo $_GET['i']; ?>" />
+			    <input type="hidden" name="orderId" id="orderId" value="<?php echo htmlentities($_GET['i']); ?>" />
 
 			    <button type="submit" id="editOrderBtn" data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
 			      

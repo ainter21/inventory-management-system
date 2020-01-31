@@ -32,7 +32,7 @@ mysqli_close($conn);
 						<div class="form-group">
 					    <label for="username" class="col-sm-2 control-label">Username</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="username" name="username" placeholder="Usename" value="<?php echo $result['username']; ?>"/>
+					      <input type="text" class="form-control" id="username" name="username" placeholder="Usename" value="<?php echo htmlentities($result['username']); ?>"/>
 					    </div>
 					  </div>
 
@@ -54,7 +54,7 @@ mysqli_close($conn);
 						<div class="form-group">
 					    <label for="bio" class="col-sm-2 control-label">Bio</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="bio" name="bio" placeholder="Bio" value="<?php echo $result['bio']; ?>"/>
+					      <input type="text" class="form-control" id="bio" name="bio" placeholder="Bio" value="<?php echo htmlentities($result['bio']); ?>"/>
 					    </div>
 					  </div>
 

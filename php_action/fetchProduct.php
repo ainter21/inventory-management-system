@@ -60,11 +60,11 @@ if(mysqli_num_rows($result) > 0) {
  		// image
  		$productImage,
  		// product name
- 		$row[1], 
+ 		htmlentities($row[1]), 
  		// rate
- 		$row[6],
+ 		htmlentities($row[6]),
  		// quantity 
- 		$row[5], 		 	
+ 		htmlentities($row[5]), 		 	
  		// brand
  		$brand,
  		// category 		

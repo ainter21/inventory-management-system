@@ -35,7 +35,7 @@ if(mysqli_num_rows($result) > 0) {
 	</div>';
 
  	$output['data'][] = array( 		
- 		$row[1], 		
+ 		htmlentities($row[1]), 		
  		$activeBrands,
  		$button
  		); 	
