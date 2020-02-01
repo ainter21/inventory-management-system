@@ -151,7 +151,7 @@ mysqli_close($conn);
 					<?php while ($orderResult = mysqli_fetch_assoc($userwiseQuery)) { ?>
 						<tr>
 							<td><?php echo htmlentities($orderResult['username'])?></td>
-							<td><?php echo htmlentities($orderResult['totalorder'])?></td>
+							<td><?php echo $orderResult['totalorder']?></td>
 							
 						</tr>
 						
